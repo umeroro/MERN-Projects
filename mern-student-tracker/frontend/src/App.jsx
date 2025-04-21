@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from "react";
-import Student from "./components/Student";
-import Studentform from "./components/Studentform";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import Student from "./components/Student";
+import StudentForm from "./components/StudentForm";
 
-const App = () => {
+function App() {
   const [students, setStudents] = useState([]);
 
   useEffect(() => {
     axios
       .get("http://localhost:5000/students")
       .then((res) => setStudents(res.data))
-      .catch((error) => console.error(error));
+      .catch((err) => console.error(err));
   }, []);
 
   const addStudent = (student) => {
@@ -38,19 +38,19 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h1>Student Progress Tracker</h1>
-      <Studentform addStudent={addStudent} />
+      <StudentForm addStudent={addStudent} />
       {students.map((student) => (
         <Student
           key={student.name}
           name={student.name}
-          age={student.age}
           progress={student.progress}
+          updateProgress={updateProgress}
         />
       ))}
     </div>
   );
-};
+}
 
 export default App;

@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
-const Studentform = ({ addStudent }) => {
+function StudentForm({ addStudent }) {
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
   const [progress, setProgress] = useState("");
@@ -36,6 +36,6 @@ const Studentform = ({ addStudent }) => {
       <button type="submit">Add Student</button>
     </form>
   );
-};
+}
 
-export default Studentform;
+export default StudentForm;

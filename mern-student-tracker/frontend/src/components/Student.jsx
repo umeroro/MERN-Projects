@@ -1,13 +1,11 @@
-import React from 'react'
-
-const Student = ({name , progress}) => {
+function Student({ name, progress, updateProgress }) {
   return (
     <div>
       <h3>{name}</h3>
-      <p>{progress}</p>
-      <button onClick={()=> increaseProgress(name)}>Increase Progress</button>
+      <p>Progress: {progress}</p>
+      <button onClick={() => updateProgress(name)}>Increase Progress</button>
     </div>
-  )
+  );
 }
 
-export default Student
+export default Student;
